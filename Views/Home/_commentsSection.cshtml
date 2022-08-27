@@ -1,0 +1,26 @@
+﻿@model Ticket
+
+<div class="mt-2" style=" overflow-y: scroll; display: block; height: 320px;">
+    @foreach (var comment in Model.Comments)
+    {
+        @*<div class="col">
+                @comment.Author
+                @comment.Text
+            </div>*@
+        <div class="custom-container m-2 text-light" style="font-size: 12px; border-right-width:0px; border-left-width:0px;">
+            <div class="row">
+                <div class="col m-2">
+                    <p>@comment.Author</p>
+                </div>
+                <div class="col m-2">
+                    <p style="float:right">@comment.Date</p>
+                </div>
+            </div>
+            <div class="row m-2">
+                <p>@comment.Text</p>
+            </div>
+        </div>
+    }
+</div>
+
+<input hidden id="ticketInfo" value="@Model.Id" />

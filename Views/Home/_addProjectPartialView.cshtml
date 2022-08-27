@@ -1,0 +1,75 @@
+﻿@model Project
+
+@*@using (Html.BeginForm("AddProject", "Home", FormMethod.Post))
+{
+    <div class="modal-header custom-mod-header">
+        <h5 class="modal-title" id="exampleModalLabel">Project Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(p => p.Id)
+        <div class="form-group">
+            @Html.LabelFor(p => p.ProjectName, htmlAttributes: new { @class = "control-label col-3" })
+            <div class="col-9">
+                @Html.TextBoxFor(p => p.ProjectName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.ProjectName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(p => p.ProjectDescription, htmlAttributes: new { @class = "control-label col-3" })
+            <div class="col-9">
+                @Html.TextBoxFor(p => p.ProjectDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.ProjectDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer custom-mod-footer">
+        <div>
+            <button type="submit" class="btn button-green btn-sm" id="btnSave" style="margin-right:10px;">Save</button>
+            <button type="button" class="btn button-red btn-sm" data-bs-dismiss="modal">Cancel</button>
+        </div>
+    </div>
+}*@
+
+
+<form method="post" asp-controller="Home" asp-action="AddProject">
+    <div class="modal-header custom-mod-header">
+        <h5 class="modal-title" id="exampleModalLabel">Project Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input hidden asp-for="Id" />
+        <div class="form-group">
+            <div class="col-12">
+                <input asp-for="ProjectName" class="form-control custom-input" placeholder="Project title" />
+                <span asp-validation-for="ProjectName"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-12 mt-2">
+                <textarea asp-for="ProjectDescription" class="form-control custom-input" placeholder="Description"></textarea>
+                <span asp-validation-for="ProjectDescription"></span>
+            </div>
+        </div>
+        @if (User.IsInRole("Admin") && Model.Company.Users != null)
+        {
+            <div class="form-group">
+                <div class="mt-2">
+                    <label asp-for="UsersIds">Users to assign</label>
+                    <select style=" width:53vw; text-align:center" class="custom-input" asp-for="UsersIds" asp-items="Model.UsersToAssign"></select>
+                    @*@Html.DropDownList("Users", Model.Company.Users as MultiSelectList, "Select users");*@
+                    @*@Html.ListBoxFor(m => m.UsersIds, Model.UsersToAssign, new { @class = "listbox" })*@
+
+                </div>
+            </div>
+        }
+    </div>
+    <div class="modal-footer custom-mod-footer">
+        <div>
+            <button type="submit" class="btn button-green btn-sm" id="btnSave" style="margin-right:10px;">Save</button>
+            <button type="button" class="btn button-red btn-sm" data-bs-dismiss="modal">Cancel</button>
+        </div>
+    </div>
+</form>

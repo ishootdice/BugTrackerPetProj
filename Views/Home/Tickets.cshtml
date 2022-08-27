@@ -1,0 +1,167 @@
+﻿@model Ticket
+
+@{
+    ViewBag.Title = "Your tickets";
+}
+
+
+@if (Model.Tickets.Any())
+{
+    <div class="custom-container mt-5" style="height: 40vh; width: 80vw; margin: auto; overflow-y: scroll;">
+        <h6 style="margin-left:1vw; margin-top:1vh;">Tickets</h6>
+        <table class="table custom-table" style="font-size: 12px;">
+            <thead class="thead custom-thead text-light" style="border-top: 2px; background-color: rgb(40, 53, 92);">
+                <tr>
+                    <th class="col-sm-3">
+                        Project
+                    </th>
+                    <th class="col-sm-3">
+                        Title
+                    </th>
+                    <th class="col-sm-1">
+                        Status
+                    </th>
+                    <th class="col-sm-2">
+                        Days outstanding
+                    </th>
+                    <th class="col-sm-1">
+                        Priority
+                    </th>
+                    <th class="col-sm-2">
+                        Actions
+                    </th>
+                </tr>
+            </thead>
+            <tbody class="tbody text-light">
+                @foreach (var ticket in Model.Tickets)
+                {
+                    <tr class="text-light tr-hover">
+                        <input hidden value="@ticket.ProjectId" id="projId" />
+                        <th hidden id="projectIdHolder">
+                            @ticket.ProjectId
+                        </th>
+                        <th class="clickable-row">
+                            @ticket.Project.ProjectName
+                        </th>
+                        <th class="clickable-row">
+                            @ticket.Title
+                        </th>
+                        <th class="clickable-row">
+                            @ticket.Status
+                        </th>
+                        <th class="clickable-row">
+                            @ticket.TimeEstimate
+                        </th>
+                        <th class="clickable-row">
+                            @ticket.Priority
+                        </th>
+                        <th>
+                            <button class="btn edit-button-blue btn-sm" style="font-size:12px" onclick="GetTicketDetails(@ticket.Id)">Edit</button>
+                        </th>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+}
+else
+{
+    <div class="custom-container mt-5" style="height: 40vh; width: 80vw; margin:auto;">
+        <h6 style="margin-left:1vw; margin-top:1vh;">Tickets</h6>
+        <table class="table custom-table" style="font-size:12px">
+            <thead class="thead custom-thead text-light" style="border-top: 2px; background-color: rgb(40, 53, 92) ">
+                <tr>
+                    <th class="col-sm-3">
+                        Project
+                    </th>
+                    <th class="col-sm-3">
+                        Title
+                    </th>
+                    <th class="col-sm-2">
+                        Status
+                    </th>
+                    <th class="col-sm-2">
+                        Days outstanding
+                    </th>
+                    <th class="col-sm-2">
+                        Priority
+                    </th>
+                </tr>
+            </thead>
+        </table>
+        <div style="text-align:center; margin-top:10vh; font-size:12px">
+            <p>Yoy don't have any tickets yet</p>
+        </div>
+    </div>
+}
+
+<div class="modal fade" id="editTicketModal" tabindex="-1" aria-labelledby="editTicketModallLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content mod-content">
+            <partial name="_editTicketPartialView" model="Model" />
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.clickable-row').click(function () {
+                var projectId = $(this).find("td:eq(0)").text();
+                var projId = $('#projId').val();
+                window.location.href = "/Home/ProjectInformation/" + projId;
+
+            });
+        });
+
+        function GetTicketDetails(id) {
+            $.ajax({
+                url: "/Home/UpdateTicket/" + id,
+                type: "GET",
+                contentType: "application/json;charset=UTF-8",
+                dataType: "json",
+                success: function (response) {
+                    $('#currentId').val(response.Id);
+                    $('#currentTitle').val(response.Title);
+                    $('#currentDescription').val(response.Description);
+                    $('#currentStatus').val(response.Status);
+                    $('#currentType').val(response.Type);
+                    $('#currentPriority').val(response.Priority);
+                    $('#author').val(response.Author);
+                    $('#projectId').val(response.ProjectId);
+                    $('#editTicketModal').modal('show');
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });
+        };
+
+        function UpdateTicket(form) {
+            window.location.href = "/Home/Tickets";
+            @*var id = $('#currentId').val();
+            var ticketTitle = $('#currentTitle').val();
+            var ticketDescription = $('#currentDescription').val();
+            var ticketType = $('#currentType').val();
+            var ticketStatus = $('#currentStatus').val();
+            var ticketPriority = $('#currentPriority').val();
+            var author = $('#author').val();
+            var projectId = $('#projectId').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/UpdateTicket/",
+                data: { "Id": id, "Title": ticketTitle, "Description": ticketDescription, "Type": ticketType, "Status": ticketStatus, "Priority": ticketPriority, "Author": author, "ProjectId": projectId },
+                success: function () {
+                    window.location.href = "/Home/Tickets";
+                },
+                error: function (response) {
+                    alert(response.responseText);
+                }
+            });*@
+        };
+    </script>
+}

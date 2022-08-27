@@ -1,0 +1,426 @@
+﻿@model Project
+@{
+    ViewData["Title"] = "Home Page";
+    bool isCompanyMember = ViewBag.IsCompanyMember;
+}
+
+
+@if (Model.Projects.Any())
+{
+    <div class="container custom-container" style="margin-top: 100px; max-width: 1000px; margin-bottom: 100px; background: #1a263e; border:solid; border-color: rgb(33, 52, 87); border-radius:20px ">
+        <table class="table custom-table">
+            <div class="row">
+                <div class="inline col-sm-1 p-2 text-light">
+                    <p style="float:inline-end; margin-left:10px">Projects</p>
+                </div>
+                <div class="col-sm-8"></div>
+                <div class="inline col-sm-3 p-2">
+                    @if (User.IsInRole("Admin") && isCompanyMember || !isCompanyMember)
+                    {
+                        <div class="AddPopUp">
+                            <a href="#" class="btn btn-sm button-green" data-bs-toggle="modal" data-bs-target="#addProjectModal"
+                               style="font-size: 12px; width: auto; float: right; margin-right:10px">Create</a>
+                        </div>
+                    }
+            <thead class="thead custom-thead">
+                <tr class="text-light">
+                    <th scope="col-sm-3">
+                        <p>
+                            <small>
+                                PROJECT NAME
+                            </small>
+                        </p>
+                    </th>
+                    <th scope="col-sm-6">
+                        <p>
+                            <small>
+                                DESCRIPTION
+                            </small>
+                        </p>
+                    </th>
+                    <th scope="col-sm-3">
+                        <p style="float:right">
+                            <small>
+                                ACTIONS
+                            </small>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var project in Model.Projects)
+                {
+                    <tr scope="row" class="text-light">
+                        <td hidden id="projName" class="col-sm-3" onclick="location.href = '@Url.Action("ProjectInformation", "Home", new { id = project.Id })'">
+                            <p class="mt-3">
+                                <small>
+                                    @project.Id
+                                </small>
+                            </p>
+                        </td>
+                        <td id="projName" class="col-sm-3" onclick="location.href = '@Url.Action("ProjectInformation", "Home", new { id = project.Id })'">
+                            <p class="mt-3">
+                                <small>
+                                    @project.ProjectName
+                                </small>
+                            </p>
+                        </td>
+                        <td id="projDesc" class="col-sm-6" onclick="location.href = '@Url.Action("ProjectInformation", "Home", new { id = project.Id })'">
+                            <p class="mt-3">
+                                <small>
+                                    @project.ProjectDescription
+                                </small>
+                            </p>
+                        </td>
+                        <td class="col-sm-3">
+                            <a asp-controller="Home" asp-action="DeleteProject" class="btn button-red btn-sm mt-3" asp-route-Id="@project.Id"
+                               style="font-size: 12px; width: auto; float: right; margin-left: 4px;">Delete</a>
+
+                            <a class="btn button-blue btn-sm mt-3" id="editProjectBtn" onclick="GetDetails(@project.Id)"
+                               style="font-size: 12px; width: auto; float: right; margin-right: 10px">Edit</a>
+                            <input hidden id="projectIdInput" value="@project.Id" />
+                        </td>
+                    </tr>
+                }
+            </tbody>
+    </div>
+    </div>
+    </table>
+    </div>
+<div class="container" style="max-width: 1000px; margin-bottom: 200px;">
+    <div class="row" style="justify-content:space-between">
+        <div class="col-sm-3" style="width:22vw">
+            <div class="card custom-card" >
+                <div class="card-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3" style="width:22vw">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3" style="width:22vw">
+            <div class="card custom-card">
+                <div class="card-body">
+                    <canvas id="myChart3"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+}
+else if (isCompanyMember)
+{
+    <div class="container custom-container" style="margin-top: 100px; height:40vh; max-width: 80vw; margin-bottom: 200px; background: #1a263e; border:solid; border-color: rgb(33, 52, 87); border-radius:20px ">
+        <table class="table custom-table">
+            <div class="row">
+                <div class="inline col-sm-1 p-2 text-light">
+                    <p style="float:inline-end; margin-left:10px">Projects</p>
+                </div>
+                <div class="col-sm-8"></div>
+                <div class="inline col-sm-3 p-2">
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <div class="AddPopUp">
+                            <a href="#" class="btn btn-sm button-green" data-bs-toggle="modal" data-bs-target="#addProjectModal"
+                               style="font-size: 12px; width: auto; float: right; margin-right:10px">Create</a>
+                        </div>
+                    }
+            <thead class="thead custom-thead">
+                <tr class="text-light">
+                    <th scope="col-sm-3">
+                        <p>
+                            <small>
+                                PROJECT NAME
+                            </small>
+                        </p>
+                    </th>
+                    <th scope="col-sm-6">
+                        <p>
+                            <small>
+                                DESCRIPTION
+                            </small>
+                        </p>
+                    </th>
+                    <th scope="col-sm-3">
+                        <p style="float:right">
+                            <small>
+                                ACTIONS
+                            </small>
+                        </p>
+                    </th>
+                </tr>
+            </thead>
+    </div>
+    </div>
+    </table>
+    <div style="text-align: center; margin-top: 10vh;">
+        @if (User.IsInRole("Admin"))
+        {
+            <p>
+                There is no projects and tickets in your organization. As admin you can create projects
+                and then add tickets to these projects if you need.
+            </p>
+        }
+        else
+        {
+            <p>You have been assigned to organization. But you have no projects and tickets yet.</p>
+        }
+    </div>
+    </div>
+}
+else
+{
+
+    <div class="container" style="min-height:100vh; max-width:1000px;">
+        <div class="custom-container mt-5" style="border-radius:0px;height:35vh">
+            <div class="row">
+                <div class="col-sm-5">
+                    <img src="https://www.rmmindia.com/images/Services/RMM-Web-Development.jpg" style="width:30vw; height:35vh; padding-bottom:2px" />
+                </div>
+                <div class="col-sm-7 mt-4" style="position:relative;">
+                    <h4 class="text-light" style="text-align:center;">Individual</h4>
+                    <br />
+                    <p style="font-size:16px; text-align:center; margin-left:auto; margin-right:auto; width:75%">
+                        You can work on personal projects. Create projects, set tasks that need to be done during development,
+                        track your progress. You can also add friends to your projects, add comments to tasks, which will
+                        eliminate communication problems at certain points in the project. If you want to start your with your first project
+                        click
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#addProjectModal"
+                           style="font-size: 16px; width: auto; margin-right:10px; color:white">here</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="custom-container mt-4" style="border-radius:0px; max-height:35vh">
+            <div class="row">
+                @*<div class="col-sm-7 mt-4" style="position:relative">
+                        <h3 class="text-light" style="text-align:center" ;>Company</h3>
+                        <br />
+                        <p style="font-size:16px; text-align:center; margin-left:auto; margin-right:auto; width:70%">
+                            Your company can work with all projects. You can create and control projects and tasks
+                            that need to be done during development, track your progress, communicate with your teammates.
+                            As administrator you can invite your employees and manage them.
+                            If you ready to create your company, click
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#addProjectModal"
+                               style="font-size: 16px; width: auto; margin-right:10px; color:white">here</a>
+                        </p>
+                    </div>*@
+                <div class="col-sm-7 mt-4" style="position:relative; height:35vh">
+                    <h4 class="text-light" style="text-align:center;">Company</h4>
+                    <br />
+                    <p style="font-size:16px; text-align:center; margin-left:auto; margin-right:auto; width:70%">
+                        Your company can work with all projects. You can create and control projects and tasks
+                        that need to be done during development, track your progress, communicate with your teammates.
+                        As administrator you can invite your employees and manage them.
+                        If you ready to create your company, click
+                        <a asp-controller="Home" asp-action="CreateCompany"
+                           style="font-size: 16px; width: auto; margin-right:10px; color:white">here</a>
+                    </p>
+                </div>
+                <div class="col-sm-5" style="position:relative">
+                    <img src="https://res.cloudinary.com/jerrick/image/upload/v1591079956/5ed5f414c359ef001ca99611.jpg" style="width:30vw; height:35vh; right:0px; position:absolute; padding-bottom:2px" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+<input hidden id="projectId" />
+
+
+
+<div class="modal fade" id="addProjectModal" tabindex="-1" aria-labelledby="addProjectModallLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content mod-content">
+            <partial name="_addProjectPartialView" model="Model" />
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="editProjectModal" tabindex="-1" aria-labelledby="editProjectModallLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content mod-content">
+            <partial name="_editProjectPartialView" model="Model" />
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script type="text/javascript">$(document).ready(function () {
+        $('#btnSave').click(function () {
+            var projectData = $('#projForm').serialize();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AddProject",
+                data: projectData,
+                success: function () {
+                    window.location.href = "/Home/Index";
+                }
+
+            });
+
+        });
+
+    });
+
+    $('#closeButton').click(function () {
+        $('#testAddProjectModal').modal('hide');
+    });
+
+    function GetIdToEdit(id) {
+        $('#projectId').val(id);
+    }
+
+    @*$('#editProjectBtn').click(function () {
+        var data = $(this).closest('.input').val();
+        $('#test').val(data);
+    });*@
+
+    function GetDetails(id) {
+        $.ajax({
+            url: "/Home/EditProject/" + id,
+            type: "GET",
+            contentType: "application/json;charset=UTF-8",
+            dataType: "json",
+            success: function (response) {
+                $('#currentProjectId').val(response.Id);
+                $('#currentProjectName').val(response.ProjectName);
+                $('#currentProjectDescription').val(response.ProjectDescription);
+                $('#editProjectModal').modal('show');
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    };
+
+    function UpdateProject(form) {
+        var id = $('#currentProjectId').val();
+        var projectName = $('#currentProjectName').val();
+        var projectDescription = $('#currentProjectDescription').val();
+
+        $.ajax({
+            type: "POST",
+            url: "/Home/UpdateProject/",
+            data: { "Id": id, "ProjectName": projectName, "ProjectDescription": projectDescription },
+            success: function () {
+                window.location.href = "/Home/Index";
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    };
+
+
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: @Html.Raw(Model.PieChartForType),
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            color: '#f8f9fa',
+                            font: {
+                                size:10
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tickets by type',
+                        position: 'top',
+                        color: '#f8f9fa',
+                        font: {
+                            size: 14
+                        }
+                    },
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('myChart2');
+        const myChart2 = new Chart(ctx2, {
+            type: 'doughnut',
+            data: @Html.Raw(Model.PieChartForStatus),
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            color: '#f8f9fa',
+                            font: {
+                                size: 10
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tickets by status',
+                        position: 'top',
+                        color: '#f8f9fa',
+                        font: {
+                            size: 14
+                        }
+                    },
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('myChart3');
+        const myChart3 = new Chart(ctx3, {
+            type: 'doughnut',
+            data: @Html.Raw(Model.PieChartForPriority),
+            options: {
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'right',
+                        labels: {
+                            color: '#f8f9fa',
+                            font: {
+                                size:10
+                            }
+                        }
+                    },
+                    title: {
+                        display: true,
+                        text: 'Tickets by priority',
+                        position: 'top',
+                        color: '#f8f9fa',
+                        font: {
+                            size: 14
+                        }
+                    },
+                }
+            }
+        });
+
+    </script>
+}
+
+
+
+
+
+
+
+
+

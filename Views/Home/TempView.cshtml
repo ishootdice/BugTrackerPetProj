@@ -1,0 +1,308 @@
+﻿@model Tuple<List<Ticket>, Ticket>
+@{
+    ViewBag.Title = "Project Info";
+    int projectId = ViewBag.ProjectId;
+    ViewBag.TicketId = 0;
+}
+
+
+
+<div>
+    <input hidden value="@projectId" />
+    <div class="container">
+        <div class="row justify-content-around">
+            <div class="col-4 custom-container" style="max-height:240px; position:relative;">
+                <div class="row">
+                    <div class="col">
+                        <p class="mt-2">Team</p>
+                    </div>
+                    <div class="col">
+                        @*<button class="btn btn-primary btn-sm mt-2" id="showForm" style="font-size:12px; float:right">Add</button>*@
+                        <a href="#" id="addMember" class="btn button-green btn-sm mt-2" style="font-size:12px; width:auto;
+                                    float:right">Add</a>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="text-light" style="font-size:12px;">
+                            <td>
+                                NAME
+                            </td>
+                            <td>
+                                EMAIL
+                            </td>
+                            <td>
+                                PHONE
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in ViewBag.Users)
+                        {
+                            <tr class="text-light" style="font-size:12px;">
+                                <td>
+                                    @user.UserName
+                                </td>
+                                <td>
+                                    @user.Email
+                                </td>
+                                <td>
+                                    @user.PhoneNumber
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div id="errorDiv">
+                    <p id="inviteError"></p>
+                </div>
+                <div id="hiddenEmailInput" style="position:absolute; bottom:10px; width:auto; right:10px; left:10px;">
+                    <div class="input-group">
+                        <input id="emailInput" type="email" class="form-control custom-input" placeholder="Enter user's email" style="font-size:12px" />
+                        <div class="btn-group">
+                            <button class="btn btn-outline button-blue btn-sm" id="submitInviteBtn" style="font-size:12px; width:auto; float:right; border-radius:0px">
+                                Submit
+                            </button>
+                            <button class="btn btn-outline button-red btn-sm" id="cancelInviteBtn" style="font-size:12px; width:auto; float:right">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-7 custom-container" style="max-height:auto; min-height:300px">
+                <div class="row">
+                    <div class="col">
+                        <p class="pt-2">Tickets</p>
+                    </div>
+                    <div class="col">
+                        @*<button id="addTicketBtn" class="btn btn-primary btn-sm mt-2" style="font-size:12px; width:auto; float:right">New Ticket</button>*@
+                        <a href="#" id="addTicketModalBtn" class="btn button-green btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#addTicketModal" style="font-size:12px; width:auto;
+                                    float:right">Create</a>
+                    </div>
+                </div>
+                <div id="ticketsDiv">
+                    @*@Html.Partial("_projectTickets", Model.Item1)*@
+                    @if (Model.Item1.Count() > 0)
+                    {
+                        <partial name="_projectTickets" model="Model.Item1" />
+                    }
+                    else
+                    {
+                        <div style="margin-top:100px">
+                            <p class="text-muted" style="text-align:center">There are no tickets in project yet, but you can create some</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <div class="row justify-content-around mt-5">
+        <div class="col-sm-6 custom-container m-3 card" style="min-height:200px">
+            <p class="mt-2 card-title">Info</p>
+            <div id="toReplace" class="card-body">
+                @if (Model.Item2 != null)
+                {
+                    <partial name="_ticketInfo" model="Model.Item2" />
+                }
+
+            </div>
+        </div>
+        <div class="col-sm-5 custom-container m-3 card" style="min-height:300px; position:relative">
+            <div>
+                <p class="mt-2 card-title">Comments</p>
+            </div>
+            <div id="comments" class="mt-4" style="position: absolute; left:2px; right:2px;">
+                @if (Model.Item2 != null)
+                {
+                    <partial name="_commentsSection" model="Model.Item2" />
+                }
+            </div>
+            <div style="position:absolute; bottom:2px; left:2px; right:2px">
+                <p hidden id="userData">@User.Identity.Name</p>
+                <div class="input-group m-2">
+                    <input type="text" style="font-size:12px" class="form-control custom-input" id="commentInput" />
+                    <button class="btn btn-outline button-blue btn-sm" style="margin-right:14px;" id="saveComment">Paste</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<input hidden id="projectInfo" value="@projectId" />
+
+
+<div class="modal fade" id="myModal2">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content mod-content" id="modalContent2">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="addMemberModal" tabindex="-1" aria-labelledby="addMemberModallLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            @*@Html.Partial("_addTeamMemberPartialView")*@
+            @*<partial name="_addTeamMemberPartialView" />*@
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="addTicketModal" tabindex="-1" aria-labelledby="addTicketModallLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content mod-content">
+            @*@Html.Partial("_addTicketPartialView", Model.Item2)*@
+            <partial name="_addTicketPartialView" model="Model.Item2" />
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts{
+    <script type="text/javascript">$(document).ready(function () {
+            $('#hiddenEmailInput').hide();
+            $('#errorDiv').hide();
+
+
+            $('.clickable-row').click(function () {
+                var postData = $(this).find("td:eq(0)").text();
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:7109/Home/TicketInformation/" + postData,
+                    success: function (partialView) {
+                        $('#toReplace').html(partialView);
+                    }
+                });
+            });
+
+
+
+            $('.clickable-row').click(function () {
+                var postData = $(this).find("td:eq(0)").text();
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:7109/Home/TicketComments/" + postData,
+                    success: function (partialView) {
+                        $('#comments').html(partialView)
+                    }
+                });
+            });
+
+
+
+            $('#saveComment').click(function () {
+                var commentText = $('#commentInput').val();
+                var ticket = $('#ticketInfo').val();
+                var user = $('#userData').text();
+                $('#commentInput').val('');
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:7109/Home/AddComment/",
+                    data: { "id": ticket, "message": commentText, "author": user },
+                    success: function (partialView) {
+                        $('#comments').html(partialView);
+                    }
+                });
+
+            });
+
+
+
+
+
+
+            $('#addTicketBtn').click(function () {
+                var projectData = $('#projectInfo').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:7109/Home/ShowAddTicketForm/",
+                    data: { "projectId": projectData },
+                    success: function (response) {
+                        $("#modalContent2").html(response);
+
+                        $("#myModal2").modal("show");
+                    }
+                });
+            });
+
+
+
+
+            $('#addTicketModalBtn').click(function () {
+                $('#modalTitle').val('');
+                $('#modalTime').val('');
+                $('#modalDescription').val('');
+            });
+
+            $('#addMember').click(function () {
+                $(this).hide();
+                $('#hiddenEmailInput').show();
+            });
+
+
+            $('#submitInviteBtn').click(function () {
+                var email = $('#emailInput').val();
+                var projectId = $('#projectInfo').val();
+
+                $.ajax({
+                    type: "POST",
+                    url: "/Administration/AddMember",
+                    data: { "Id": projectId, "Email": email },
+                    success: function () {
+                        $('#emailInput').val('');
+                        $('#hiddenEmailInput').hide();
+                        $('#addMember').show();
+                    },
+                    error: function (response) {
+                        $('#errorDiv').show();
+                        $('#inviteError').val('some error');
+                    }
+                });
+            });
+
+            $('#cancelInviteBtn').click(function () {
+                $('#emailInput').val('');
+                $('#hiddenEmailInput').hide();
+                $('#addMember').show();
+            });
+
+
+});
+
+        function addTicket(form) {
+            var projectId = $('#projectInfo').val();
+            @*var data = $('#ticket-add').serialize();*@
+        var title = $('#modalTitle').val();
+            var description = $('#modalDescription').val();
+            var time = $('#modalTime').val();
+            var type = $('#modalType').val();
+            var priority = $('#modalPriority').val();
+            var status = $('#modalStatus').val();
+
+            $.ajax({
+                type: "POST",
+                url: "/Home/AddTicket",
+                data: { "ProjectId": projectId, "Title": title, "Description": description, "Time": time, "Type": type, "Priority": priority, "Status": status },
+                success: function () {
+                    window.location.href = "/Home/ProjectInformation/" + projectId;
+                }
+            });
+        }
+    </script>
+
+
+}

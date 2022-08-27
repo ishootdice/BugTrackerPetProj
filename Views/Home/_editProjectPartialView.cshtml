@@ -1,0 +1,63 @@
+﻿@model Project
+
+@*@using (Html.BeginForm("EditProject", "Home", FormMethod.Post))
+{
+    <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(p => p.Id)
+        <div class="form-group">
+            @Html.LabelFor(p => p.ProjectName, htmlAttributes: new { @class = "control-label col-3" })
+            <div class="col-9">
+                @Html.TextBoxFor(p => p.ProjectName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.ProjectName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(p => p.ProjectDescription, htmlAttributes: new { @class = "control-label col-3" })
+            <div class="col-9">
+                @Html.TextBoxFor(p => p.ProjectDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(p => p.ProjectDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <div>
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
+            <button type="submit" class="btn btn-primary" id="btnSave">Save</button>
+        </div>
+    </div>
+}*@
+
+<form method="post" onsubmit="UpdateProject(this)">
+    <div class="modal-header custom-mod-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Project Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div asp-validation-summary="All"></div>
+        <input hidden asp-for="Id" id="currentProjectId"/>
+        <div class="col-9">
+            <label asp-for="ProjectName" class="control-label"></label>
+            <input type="text" class="form-control" asp-for="ProjectName" id="currentProjectName"/>
+            <span asp-validation-for="ProjectName" class="text-danger"></span>
+        </div>
+        <div class="col-9">
+            <label asp-for="ProjectDescription" class="label-control"></label>
+            <input type="text" asp-for="ProjectDescription" class="form-control" id="currentProjectDescription"/>
+            <span asp-validation-for="ProjectDescription" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="modal-footer custom-mod-footer">
+        <div class="btn-group">
+            <button type="submit" class="btn btn-sm button-green" id="btnSave" style="margin-right:10px">Save</button>
+            <button type="button" class="btn btn-sm button-red" data-bs-dismiss="modal">Cancel</button>
+        </div>
+    </div>
+</form>
+
+
+

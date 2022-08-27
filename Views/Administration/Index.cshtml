@@ -1,0 +1,114 @@
+﻿@model Tuple<List<User>, User>
+
+<div style="height:80vh">
+    <div class="row justify-content-around">
+        <div class="col-4 custom-container" style="max-height:300px; position:relative;">
+            <div class="row">
+                <div class="col">
+                    <p class="mt-2">Organization</p>
+                </div>
+                <div class="col">
+                    @*<button class="btn btn-primary btn-sm mt-2" id="showForm" style="font-size:12px; float:right">Add</button>*@
+                    <a href="#" id="addMember" class="btn button-green btn-sm mt-2" style="font-size:12px; width:auto;
+                                    float:right">Add</a>
+                </div>
+            </div>
+            <table class="table custom-table">
+                <thead class="custom-thead">
+                    <tr class="text-light" style="font-size:12px;">
+                        <td>
+                            NAME
+                        </td>
+                        <td>
+                            EMAIL
+                        </td>
+                        <td>
+                            PHONE
+                        </td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <partial name="_companyMembersPartialView" model="Model.Item1" />
+                </tbody>
+            </table>
+            <div id="invitationDiv" style="position:absolute; bottom:10px; left:10px; right:10px;">
+                <div class="input-group">
+                    <input id="inviteInput" class="form-control custom-input" type="email" style="font-size:12px;" placeholder="Enter user's email" />
+                    <div class="btn-group">
+                        <button class="btn btn-outline button-blue btn-sm" id="submitInviteBtn" style="font-size:12px; width:auto; border-radius:0px">
+                            Submit
+                        </button>
+                        <button class="btn btn-outline button-red btn-sm" id="cancelInviteBtn" style="font-size:12px; width:auto;">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="errorDiv">
+                <p id="inviteError"></p>
+            </div>
+        </div>
+        <div class="col-7 custom-container" style="max-height:auto; min-height:300px">
+            <div class="row">
+                <div class="col">
+                    <p class="pt-2">Member information</p>
+                </div>
+            </div>
+            <div id="toReplace" style="height:40vh">
+                <partial name="_userInformationPartialView" model="Model.Item2" />
+            </div>
+        </div>
+    </div>
+</div>
+<input hidden id="companyIdHolder" value="@ViewBag.CompanyId"/>
+
+
+@section Scripts{
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#errorDiv').hide();
+        $('#invitationDiv').hide();
+
+
+        $('#addMember').click(function () {
+            $('#invitationDiv').show();
+        });
+
+        $('#submitInviteBtn').click(function () {
+            var email = $('#inviteInput').val();
+            var companyId = $('#companyIdHolder').val();
+            $.ajax({
+                type: "POST",
+                url: "/Administration/AddMember",
+                data: { "Id": companyId, "Email": email },
+                success: function () {
+                    $('#inviteInput').val('');
+                    $('#invitationDiv').hide();
+                },
+                error: function (response) {
+                    $('#errorDiv').show();
+                    $('#inviteError').val(response);
+                }
+            });
+
+        });
+
+        $('#cancelInviteBtn').click(function(){
+            $('#invitationDiv').hide();
+        });
+
+        $('.clickable-row').click(function () {
+            var postData = $(this).find("td:eq(0)").text();
+
+            $.ajax({
+                type: "POST",
+                url: "https://localhost:7109/Administration/MemberInformation/" + postData,
+                success: function (partialView) {
+                    $('#toReplace').html(partialView);
+                }
+            });
+        });
+
+    });
+</script>
+}

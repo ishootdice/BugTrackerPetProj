@@ -1,0 +1,48 @@
+﻿@model List<Ticket>
+
+
+<div class="row">
+    <div class="col">
+        <p class="pt-2">Tickets</p>
+    </div>
+    <div class="col">
+        <button class="btn btn-primary btn-sm mt-2" data-bs-toggle="modal" data-bs-target="#addTicketModal" style="font-size:12px; width:auto; float:right">New Ticket</button>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr class="text-muted" style="font-size:12px">
+            <td>
+                TICKET TITLE
+            </td>
+            <td>
+                DESCRIPTION
+            </td>
+            <td>
+                TICKET STATUS
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var ticket in Model)
+            {
+                <tr>
+                    <td>
+                        @ticket.Title
+                    </td>
+                    <td>
+                        @ticket.Description
+                    </td>
+                    <td>
+                        @ticket.Status
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>

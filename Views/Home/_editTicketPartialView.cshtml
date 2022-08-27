@@ -1,0 +1,47 @@
+﻿@model Ticket
+
+<form method="post" asp-controller="Home" asp-action="UpdateTicket">
+    <div class="modal-header custom-mod-header">
+        <h5 class="modal-title" id="updateTicketModalLabel">Ticket Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="row mt-3">
+            <div class="col-12">
+                <input hidden asp-for="Author" id="author"/>
+                <input hidden asp-for="ProjectId" id="projectId"/>
+                <input hidden asp-for="Id" id="currentId"/>
+                <input asp-for="@Model.Title" class="form-control custom-input" id="currentTitle" placeholder="Please write title for ticket" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group mt-5">
+            <div class="col-12">
+                <textarea asp-for="Description" class="form-control custom-input" id="currentDescription" placeholder="Please fill this field with ticket's description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-4">
+                <select asp-for="Status" asp-items="Html.GetEnumSelectList<TicketStatus>()" class="form-select custom-input" id="currentStatus">
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <select asp-for="Type" asp-items="Html.GetEnumSelectList<TicketType>()" class="form-select custom-input" id="currentType"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <select asp-for="Priority" asp-items="Html.GetEnumSelectList<TicketPriority>()" class="form-select custom-input" id="currentPriority"></select>
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer custom-mod-footer">
+        <div>
+            <button type="button" class="btn button-red btn-sm" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn button-blue btn-sm" type="submit">Save</button>
+        </div>
+    </div>
+</form>

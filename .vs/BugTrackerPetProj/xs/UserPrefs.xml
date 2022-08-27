@@ -1,0 +1,112 @@
+﻿<Properties StartupConfiguration="{EA3B7775-D755-488C-8497-DF6D39C76400}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Controllers/AccountController.cs" relfile="Controllers/AccountController.cs" line="98" column="1" />
+      <Breakpoint file="/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Controllers/AdministrationController.cs" relfile="Controllers/AdministrationController.cs" line="122" column="1" />
+      <Breakpoint file="/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Models/SqliteRepository.cs" relfile="Models/SqliteRepository.cs" line="155" column="1" />
+      <Breakpoint file="/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Controllers/AccountController.cs" relfile="Controllers/AccountController.cs" line="190" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.BugTrackerPetProj PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/AccountController.cs">
+    <Files>
+      <File FileName="Views/Home/Index.cshtml" Line="101" Column="40" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="19" Column="26" />
+      <File FileName="Views/Home/ProjectInfo.cshtml" Line="6" Column="1" />
+      <File FileName="Views/Home/_addTicketPartialView.cshtml" Line="36" Column="19" />
+      <File FileName="Views/Home/_addProjectPartialView.cshtml" Line="58" Column="13" />
+      <File FileName="Views/Home/_editProjectPartialView.cshtml" Line="45" Column="24" />
+      <File FileName="Controllers/HomeController.cs" Line="364" Column="6" />
+      <File FileName="Models/Project.cs" Line="38" Column="19" />
+      <File FileName="Models/User.cs" Line="10" Column="65" />
+      <File FileName="Views/_ViewImports.cshtml" Line="6" Column="1" />
+      <File FileName="Views/Account/Login.cshtml" Line="96" Column="7" />
+      <File FileName="Views/Home/_usersInProjectPartialView.cshtml" Line="4" Column="1" />
+      <File FileName="Views/Home/_ticketsInProjectPartialView.cshtml" Line="19" Column="28" />
+      <File FileName="Views/Shared/_ValidationScriptsPartial.cshtml" Line="1" Column="1" />
+      <File FileName="Models/Ticket.cs" Line="33" Column="22" />
+      <File FileName="Controllers/AccountController.cs" Line="158" Column="34" />
+      <File FileName="appsettings.json" Line="1" Column="2" />
+      <File FileName="Program.cs" Line="24" Column="58" />
+      <File FileName="ViewModels/Home/AddTicketViewModel.cs" Line="34" Column="1" />
+      <File FileName="Models/SqliteRepository.cs" Line="107" Column="91" />
+      <File FileName="Migrations/20220722134353_AddProjectIdToTicket.cs" Line="1" Column="1" />
+      <File FileName="Interfaces/IRepository.cs" Line="40" Column="52" />
+      <File FileName="Interfaces/IEmailService.cs" Line="6" Column="14" />
+      <File FileName="Interfaces/IEncryptionService.cs" Line="12" Column="1" />
+      <File FileName="Controllers/AdministrationController.cs" Line="122" Column="1" />
+      <File FileName="ViewModels/Account/LoginViewModel.cs" Line="20" Column="46" />
+      <File FileName="Views/Home/_ticketInfo.cshtml" Line="18" Column="53" />
+      <File FileName="Models/AppDbContext.cs" Line="12" Column="1" />
+      <File FileName="Views/Home/ProjectInformation.cshtml" Line="134" Column="1" />
+      <File FileName="Models/TicketType.cs" Line="2" Column="29" />
+      <File FileName="Views/_ViewStart.cshtml" Line="1" Column="1" />
+      <File FileName="wwwroot/css/site.css" Line="201" Column="21" />
+      <File FileName="Models/Comment.cs" Line="22" Column="2" />
+      <File FileName="Migrations/20220728165406_AddCommentsToTicket.cs" Line="30" Column="20" />
+      <File FileName="Views/Home/_commentsSection.cshtml" Line="3" Column="73" />
+      <File FileName="Migrations/20220729160710_AddDateAndTimeToComment.cs" Line="1" Column="1" />
+      <File FileName="Views/Home/_addTeamMemberPartialView.cshtml" Line="20" Column="1" />
+      <File FileName="Views/Home/_projectTickets.cshtml" Line="32" Column="46" />
+      <File FileName="wwwroot/js/site.js" Line="31" Column="18" />
+      <File FileName="Helper.cs" Line="27" Column="23" />
+      <File FileName="Views/Home/TempView.cshtml" Line="308" Column="2" />
+      <File FileName="ViewModels/Home/AddTeamMemberViewModal.cs" Line="1" Column="1" />
+      <File FileName="Views/Home/_projectsPartialView.cshtml" Line="63" Column="9" />
+      <File FileName="Models/Company.cs" Line="26" Column="66" />
+      <File FileName="Migrations/20220812155208_AddCompanyEntity.cs" Line="22" Column="1" />
+      <File FileName="Models/GmailService.cs" Line="29" Column="18" />
+      <File FileName="Views/Home/CreateCompany.cshtml" Line="7" Column="25" />
+      <File FileName="Views/Account/Registration.cshtml" Line="43" Column="30" />
+      <File FileName="Views/Administration/Index.cshtml" Line="112" Column="8" />
+      <File FileName="Migrations/20220814205517_AddCompanyFieldToUser.cs" Line="1" Column="1" />
+      <File FileName="Views/Administration/_companyMembersPartialView.cshtml" Line="17" Column="10" />
+      <File FileName="Views/Administration/_userInformationPartialView.cshtml" Line="33" Column="1" />
+      <File FileName="ViewModels/Home/ProjectViewModel.cs" Line="1" Column="1" />
+      <File FileName="Views/Home/Tickets.cshtml" Line="29" Column="26" />
+      <File FileName="Migrations/20220819111907_AddAuthorToTicket.cs" Line="27" Column="1" />
+      <File FileName="ViewModels/Account/RegistrationViewModel.cs" Line="22" Column="19" />
+      <File FileName="Views/Home/_editTicketPartialView.cshtml" Line="3" Column="68" />
+      <File FileName="Models/TicketPriority.cs" Line="1" Column="1" />
+      <File FileName="Models/TicketStatus.cs" Line="10" Column="34" />
+      <File FileName="Views/Account/ConfirmEmail.cshtml" Line="2" Column="1" />
+      <File FileName="Views/Shared/Error.cshtml" Line="12" Column="22" />
+      <File FileName="BugTrackerPetProj.csproj" Line="23" Column="37" />
+      <File FileName="appsettings.Development.json" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="BugTrackerPetProj" expanded="True">
+            <Node name="BugTrackerPetProj" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="TicketType.cs" selected="True" />
+              </Node>
+              <Node name="ViewModels" expanded="True">
+                <Node name="Account" expanded="True" />
+                <Node name="Home" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Account" expanded="True" />
+                <Node name="Home" expanded="True" />
+                <Node name="Shared" expanded="True" />
+              </Node>
+              <Node name="wwwroot" expanded="True">
+                <Node name="css" expanded="True" />
+                <Node name="js" expanded="True" />
+              </Node>
+              <Node name="appsettings.json" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+</Properties>

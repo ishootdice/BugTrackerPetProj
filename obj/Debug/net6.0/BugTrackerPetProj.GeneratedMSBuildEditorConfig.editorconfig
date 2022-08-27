@@ -1,0 +1,132 @@
+is_global = true
+build_property.TargetFramework = net6.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = BugTrackerPetProj
+build_property.RootNamespace = BugTrackerPetProj
+build_property.ProjectDir = /Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/
+build_property.RazorLangVersion = 6.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = true
+build_property.MSBuildProjectDirectory = /Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Account/ConfirmEmail.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Db25maXJtRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Account/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Mb2dpbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Account/Registration.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9SZWdpc3RyYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Administration/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Administration/_companyMembersPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vX2NvbXBhbnlNZW1iZXJzUGFydGlhbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Administration/_userInformationPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW5pc3RyYXRpb24vX3VzZXJJbmZvcm1hdGlvblBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/CreateCompany.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9DcmVhdGVDb21wYW55LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/ProjectInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9qZWN0SW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/ProjectInformation.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9qZWN0SW5mb3JtYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/TempView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9UZW1wVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/Tickets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9UaWNrZXRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_addProjectPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fYWRkUHJvamVjdFBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_addTeamMemberPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fYWRkVGVhbU1lbWJlclBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_addTicketPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fYWRkVGlja2V0UGFydGlhbFZpZXcuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_commentsSection.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fY29tbWVudHNTZWN0aW9uLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_editProjectPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fZWRpdFByb2plY3RQYXJ0aWFsVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_editTicketPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fZWRpdFRpY2tldFBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_projectsPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fcHJvamVjdHNQYXJ0aWFsVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_projectTickets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fcHJvamVjdFRpY2tldHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_ticketInfo.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fdGlja2V0SW5mby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_ticketsInProjectPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fdGlja2V0c0luUHJvamVjdFBhcnRpYWxWaWV3LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/_usersInProjectPartialView.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9fdXNlcnNJblByb2plY3RQYXJ0aWFsVmlldy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-epu6au8slk

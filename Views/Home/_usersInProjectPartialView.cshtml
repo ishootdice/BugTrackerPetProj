@@ -1,0 +1,48 @@
+﻿@model List<User>
+
+
+<div class="row">
+    <div class="col">
+        <p class="mt-2">Team</p>
+    </div>
+    <div class="col">
+        <button class="btn btn-primary btn-sm mt-2" style="font-size:12px; width:auto; float:right">New Member</button>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr class="text-muted" style="font-size:12px">
+            <td>
+                NAME
+            </td>
+            <td>
+                EMAIL
+            </td>
+            <td>
+                PHONE
+            </td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model.Any())
+        {
+            @foreach (var user in Model)
+            {
+                <tr>
+                    <td>
+                        @user.UserName
+                    </td>
+                    <td>
+                        @user.Email
+                    </td>
+                    <td>
+                        @user.PhoneNumber
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+    <tfoot>
+
+    </tfoot>
+</table>

@@ -1,0 +1,64 @@
+﻿@model RegistrationViewModel
+
+@{
+    ViewBag.Title = "Registration Page";
+}
+
+<div style="min-height:80vh; position:relative">
+    <div class="custom-container" style="max-width:800px; margin:auto; position:absolute; top:10%; left:20%">
+        <div class="form-group">
+            <button id="loginBtn" class="btn auth-form-btn" style="width: 396px; height: 60px;">Log In</button>
+            <button class="btn auth-form-btn-selected" style="width: 396px; height: 60px;">Registration</button>
+        </div>
+        <form method="post" style="margin:auto;">
+            <div class="row" style="justify-content:space-between">
+                <div class="col-sm-5 mt-5" style="margin-top:10px; margin-left:auto">
+                    <input asp-for="FirstName" class="form-control custom-input" placeholder="Your First Name" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div class="col-sm-5 mt-5" style="margin-top:10px; margin-right:auto">
+                    <input asp-for="LastName" class="form-control custom-input" placeholder="Your Last Name" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+                <div class="col-sm-10 mt-5" style="margin-top: 10px; margin-left: auto; margin-right: auto">
+                    <input asp-for="Email" class="form-control custom-input" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <div class="col-sm-10 mt-5" style="margin-top: 10px; margin-left:auto; margin-right:auto">
+                    <input asp-for="PhoneNumber" class="form-control custom-input" placeholder="Phone Number" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+                <div class="col-sm-10 mt-5" style="margin-top: 10px; margin-left: auto; margin-right: auto">
+                    <input asp-for="Password" class="form-control custom-input" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="col-sm-10 mt-5" style="margin-top: 10px; margin-left: auto; margin-right: auto">
+                    <input asp-for="PasswordConfirmation" class="form-control custom-input" placeholder="Repeat Your Password" />
+                    <span asp-validation-for="PasswordConfirmation" class="text-danger"></span>
+                </div>
+                <div class="col-sm-12">
+                    <button type="submit" class="btn button-blue mt-4" style="width:auto; float:right; margin-right:70px;
+            margin-bottom: 10px">
+                        Create
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts{
+    <script type="text/javascript">$(document).ready(function () {
+            $('#loginBtn').click(function () {
+                $.ajax({
+                    type: "GET",
+                    url: "/Account/Login/",
+                    success: function () {
+                        window.location.href = "/Account/Login/";
+                    }
+                });
+            });
+        });</script>
+}
+

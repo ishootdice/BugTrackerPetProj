@@ -1,0 +1,41 @@
+﻿@model List<Ticket> 
+
+
+
+<div style="overflow-y: scroll; height: 320px; display:block;">
+    <table class="table custom-table" >
+        <thead class="custom-thead">
+            <tr class="text-light custom-tr" style="font-size:12px">
+                <td>
+                    TICKET TITLE
+                </td>
+                <td>
+                    DESCRIPTION
+                </td>
+                <td>
+                    TICKET STATUS
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+
+                <tr class="text-light tr-hover clickable-row" style="font-size:12px;" data="@Model[i].Id">
+                    <td hidden id="hiddenElement">
+                        @Model[i].Id
+                    </td>
+                    <td>
+                        @Model[i].Title
+                    </td>
+                    <td>
+                        @Model[i].Description
+                    </td>
+                    <td>
+                        @Model[i].Status
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

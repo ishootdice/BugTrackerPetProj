@@ -1,0 +1,63 @@
+﻿@model Ticket
+
+
+
+<form method="post" id="ticket-add" asp-controller="Home" asp-action="AddTicket">
+    <div class="modal-header custom-mod-header">
+        <h5 class="modal-title" id="addTicketModalLabel">Ticket Information</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <div class="modal-body">
+        <div asp-validation-summary="ModelOnly"></div>
+        <div class="row mt-3">
+            <div class="col-9">
+                <input hidden asp-for="Author" value="@User.Identity.Name"/>
+                <input hidden asp-for="ProjectId" value="@Model.ProjectId" />
+                <input asp-for="@Model.Title" class="form-control custom-input" id="modalTitle" placeholder="Please write title for ticket" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="col-3">
+                <input asp-for="TimeEstimate" type="time" class="form-control custom-input" id="modalTime" />
+                <span asp-validation-for="TimeEstimate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group mt-5">
+            <div class="col-12">
+                <textarea asp-for="Description" class="form-control custom-input" id="modalDescription" placeholder="Please fill this field with ticket's description"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-4">
+                @*<label asp-for="Status"></label>*@
+                <select asp-for="Status" asp-items="Html.GetEnumSelectList<TicketStatus>()" class="form-select custom-input" id="modalStatus">
+                </select>
+                <span asp-validation-for="Status" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <select asp-for="Type" asp-items="Html.GetEnumSelectList<TicketType>()" class="form-select custom-input" id="modalType"></select>
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="col-4">
+                <select asp-for="Priority" asp-items="Html.GetEnumSelectList<TicketPriority>()" class="form-select custom-input" id="modalPriority"></select>
+                <span asp-validation-for="Priority" class="text-danger"></span>
+            </div>
+        </div>
+        @if (Model.Project.Users.Count > 1)
+        {
+            <div class="form-group">
+                <div class="mt-2">
+                    <label asp-for="UsersIds">Users to assign</label>
+                    <select style=" width:53vw; text-align:center" class="custom-input" asp-for="UsersIds" asp-items="Model.UsersToAssign"></select>
+                </div>
+            </div>
+        }
+    </div>
+    <div class="modal-footer custom-mod-footer">
+        <div>
+            <button type="button" class="btn button-red btn-sm" data-bs-dismiss="modal">Cancel</button>
+            <button class="btn button-blue btn-sm" type="submit">Save</button>
+        </div>
+    </div>
+</form>
+

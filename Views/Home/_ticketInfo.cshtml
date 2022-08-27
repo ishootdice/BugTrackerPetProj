@@ -1,0 +1,81 @@
+﻿@model Ticket
+
+@if (Model.Title != null)
+    {
+<div style="min-height:160px">
+    <div class="row mt-3 text-light" style="font-size:12px;">
+        <div class="col-sm-3">
+            TITLE
+        </div>
+        <div class="col-sm-3">
+            AUTHOR
+        </div>
+        <div class="col-sm-6">
+            DESCRIPTION
+        </div>
+    </div>
+    <div class="row mt-3" style="font-size:12px;">
+        <input hidden id="ticketId" value="@Model.Id"/>
+        <div class="col-sm-3">
+            @Model.Title
+        </div>
+        <div class="col-sm-3">
+            @Model.Author
+        </div>
+        <div class="col-sm-6">
+            @Model.Description
+        </div>
+    </div>
+    <div class="row mt-5 text-light" style="font-size:12px;">
+        <div class="col">
+            TYPE
+        </div>
+        <div class="col">
+            STATUS
+        </div>
+        <div class="col">
+            PRIORITY
+        </div>
+        <div class="col">
+            TIME ESTIMATE
+        </div>
+    </div>
+    <div class="row mt-2" style="font-size:12px;">
+        <div class="col">
+            <span class="custom-badge">@Model.Type</span>
+        </div>
+        <div class="col">
+            <span class="custom-badge">@Model.Status</span>
+        </div>
+        <div class="col">
+            <span class="custom-badge">@Model.Priority</span>
+        </div>
+        <div class="col">
+            @Model.TimeEstimate
+        </div>
+    </div>
+    <div class="row mt-5 text-light" style="font-size:12px">
+        <div class="col">
+            ASSIGNED DEVS
+        </div>
+    </div>
+    <div class="row mt-2 text-light" style="font-size:12px">
+        <div class="col">
+            @foreach (var user in Model.Users)
+            {
+                <p style="margin-top:2px; margin-bottom:2px">@user.UserName</p>
+            }
+        </div>
+    </div>
+
+</div>
+            }
+            else
+            {
+                <div style="text-align: center; margin:auto">
+                    <p style="margin-top:10vh" class="text-muted">Please, select some ticket to see it's information</p>
+                </div>
+            }
+
+
+

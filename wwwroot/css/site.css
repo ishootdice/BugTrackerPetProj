@@ -1,0 +1,313 @@
+﻿html {
+    font-size: 14px;
+    margin: 0;
+    height: 100%;
+    background: linear-gradient(122deg, rgba(38,56,98,1) 0%, rgba(23,31,49,1) 25%, rgba(23,31,49,1) 48%, rgba(23,31,49,1) 70%, rgba(23,31,49,1) 100%);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+    background: linear-gradient(122deg, rgba(38,56,98,1) 0%, rgba(23,31,49,1) 25%, rgba(23,31,49,1) 48%, rgba(23,31,49,1) 70%, rgba(23,31,49,1) 100%);
+    background-size:100%;
+    background-repeat:no-repeat;
+    margin: 0;
+    min-height: 100vh;
+    height: auto;
+}
+
+
+
+/*.button {
+    background: rgb(27, 38, 59);
+}*/
+
+a.button-green {
+    background-color: rgb(27, 38, 59);
+    color: rgb(156, 209, 113);
+    border-radius: 16px;
+    border-color: rgb(156, 209, 113);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+    a.button-green:hover {
+        background-color: rgb(156, 209, 113);
+        color: white;
+        transition: 0.5s;
+    }
+
+button.button-green {
+    background-color: rgb(27, 38, 59);
+    color: rgb(156, 209, 113);
+    border-color: rgb(156, 209, 113);
+    border-radius: 16px;
+    border-width: 1px;
+    min-width: 100px;
+}
+
+    button.button-green:hover {
+        background-color: rgb(156, 209, 113);
+        color: white;
+        transition: 0.5s;
+    }
+
+a.button-blue {
+    background-color: rgb(27, 38, 59);
+    color: rgb(92, 136, 212);
+    border-radius: 16px;
+    border-color: rgb(92, 136, 212);
+    border-width:1px;
+    min-width: 100px;
+}
+
+a.button-blue:hover {
+    background-color: rgb(92, 136, 212);
+    color: white;
+    transition: 0.5s;
+}
+
+button.button-blue {
+    background-color: rgb(27, 38, 59);
+    color: rgb(92, 136, 212);
+    border-radius: 16px;
+    border-color: rgb(92, 136, 212);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+button.button-blue:hover {
+    background-color: rgb(92, 136, 212);
+    color: white;
+    transition: 0.5s;
+}
+
+button.edit-button-blue {
+    background-color: rgb(27, 38, 59);
+    color: rgb(92, 136, 212);
+    border-radius: 16px;
+    border-color: rgb(92, 136, 212);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+button.edit-button-blue:hover {
+    color: white;
+    transition: 0.5s;
+}
+
+a.button-red {
+    background-color: rgb(27, 38, 59);
+    color: rgb(228, 113, 94);
+    border-radius: 16px;
+    border-color: rgb(228, 113, 94);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+    a.button-red:hover {
+        background-color: rgb(228, 113, 94);
+        color: white;
+        transition: 0.5s;
+    }
+
+button.button-red {
+    background-color: rgb(27, 38, 59);
+    color: rgb(228, 113, 94);
+    border-radius: 16px;
+    border-color: rgb(228, 113, 94);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+    button.button-red:hover {
+        background-color: rgb(228, 113, 94);
+        color: white;
+        transition: 0.5s;
+    }
+
+div.mod-content {
+    background-color: rgb(27, 38, 59);
+    color: white;
+    border-radius: 10px;
+}
+
+div.custom-mod-header {
+    border:unset;
+    color:white;
+}
+
+div.custom-mod-footer {
+    border:unset;
+}
+
+div.custom-container {
+    background-color: rgb(27, 38, 59);
+    color: white;
+    border-radius: 10px;
+}
+
+thead.custom-thead {
+    border-bottom-width: 2px;
+    border-top-style: hidden;
+    border-color: rgb(33, 52, 87);
+}
+
+table.custom-table {
+    border-top: 2px solid;
+    border-color: rgb(33, 52, 87);
+}
+
+
+
+.td {
+    border-style: none;
+}
+
+tr.tr-hover:hover {
+    background-color: rgb(92, 136, 212);
+    transition:0.8s;
+}
+
+th.th-hover:hover {
+    background-color: rgb(92, 136, 212);
+    transition: 0.8s;
+}
+
+div.custom-container {
+    background: #1a263e;
+    border: solid;
+    border-color: rgb(33, 52, 87);
+    border-radius: 20px
+}
+
+div.custom-card {
+    background: #1a263e;
+    color: white;
+    border-radius: 20px;
+    border-width: 2px;
+    border-color: rgb(33, 52, 87);
+}
+
+input.custom-input {
+    background-color: rgb(27, 38, 59);
+    color: white;
+    border-radius: 16px;
+    border-color: rgb(92, 136, 212);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+textarea.custom-input {
+    background-color: rgb(27, 38, 59);
+    color: white;
+    border-radius: 16px;
+    border-color: rgb(92, 136, 212);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+select.custom-input {
+    background-color: rgb(27, 38, 59);
+    color: white;
+    border-radius: 16px;
+    border-color: rgb(92, 136, 212);
+    border-width: 1px;
+    min-width: 100px;
+}
+
+    input.custom-input:focus {
+        background-color: rgb(27, 38, 59);
+        color: white;
+    }
+
+    input.custom-input:-webkit-autofill,
+    input.custom-input:-webkit-autofill:hover,
+    input.custom-input:-webkit-autofill:focus,
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    textarea:-webkit-autofill,
+    textarea:-webkit-autofill:hover,
+    textarea:-webkit-autofill:focus,
+    select:-webkit-autofill,
+    select:-webkit-autofill:hover,
+    select:-webkit-autofill:focus {
+        color: black;
+        background-color: rgb(27, 38, 59);
+    }
+
+
+button.auth-form-btn {
+    background-color: rgb(27, 38, 59);
+    color: rgb(92, 136, 212);
+    border-color: rgb(27, 38, 59);
+    margin: 0px;
+    padding: 0;
+    border-radius: 10px 10px 0px 0px;
+    border-width: 3px;
+}
+
+    button.auth-form-btn:hover {
+        background-color: rgb(27, 38, 59);
+        color: rgb(92, 136, 212);
+        border-color: rgb(27, 38, 59);
+        margin: 0px;
+        padding: 0;
+        border-radius: 10px 10px 0px 0px;
+        border-width: 3px;
+        border-bottom-color: rgb(92, 136, 212);
+    }
+
+
+button.auth-form-btn-selected {
+    background-color: rgb(92, 136, 212);
+    color: white;
+    border-color: rgb(92, 136, 212);
+    margin: 0px;
+    padding: 0;
+    border-radius: 10px 10px 0px 0px;
+    border-width: 3px;
+}
+
+    button.auth-form-btn-selected:hover {
+/*        background-color: rgb(92, 136, 212);
+        color: rgb(92, 136, 212);
+        border-color: rgb(27, 38, 59);
+        margin: 0px;
+        padding: 0;
+        border-radius: 10px 10px 0px 0px;
+        border-width: 3px;
+        border-bottom-color: rgb(92, 136, 212);*/
+    color:white;
+    }
+
+.custom-badge {
+    background-color: rgb(27, 38, 59);
+    color: rgb(92, 136, 212);
+    border-color: rgb(92, 136, 212);
+    border: 1px solid;
+    padding-top:2px;
+    padding-bottom:2px;
+    border-radius: 10px;
+    padding-right:10px;
+    padding-left:10px;
+    font-size:10px;
+    font-weight:bold;
+}
+
+
