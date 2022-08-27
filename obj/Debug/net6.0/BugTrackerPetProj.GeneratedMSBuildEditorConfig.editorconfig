@@ -15,8 +15,16 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes = true
 build_property.MSBuildProjectDirectory = /Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj
 build_property._RazorSourceGeneratorDebug = 
 
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Account/ChangePassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9DaGFuZ2VQYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Account/ConfirmEmail.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Db25maXJtRW1haWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Account/ForgotPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWNjb3VudC9Gb3Jnb3RQYXNzd29yZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Account/Login.cshtml]

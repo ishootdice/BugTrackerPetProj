@@ -14,7 +14,8 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation()
     });
 
 builder.Services.AddDbContext<AppDbContext>(options => options.UseSqlite(builder.Configuration["ConnectionStrings:DefaultConnection"]));
-builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>();
+builder.Services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders().
+                 AddTokenProvider<PasswordResetTokenProvider<User>>("passwordReset");
 
 builder.Services.AddScoped<IRepository, SqliteRepository>();
 builder.Services.AddTransient<IEmailService, GmailService>();

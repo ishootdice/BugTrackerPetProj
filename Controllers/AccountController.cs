@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using BugTrackerPetProj.Interfaces;
 using BugTrackerPetProj.Models;
@@ -22,16 +23,23 @@ namespace BugTrackerPetProj.Controllers
 
         private readonly IRepository _repository;
 
-        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IRepository repository)
+        private readonly IEmailService _emailService;
+
+        private readonly IEncryptionService _encryptionService;
+
+        public AccountController(UserManager<User> userManager, SignInManager<User> signInManager, IRepository repository, IEmailService emailService,
+                                 IEncryptionService encryptionService)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _repository = repository;
+            _emailService = emailService;
+            _encryptionService = encryptionService;
         }
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> LoginAsync(string? returnUrl)
+        public async Task<IActionResult> Login(string? returnUrl)
         {
             LoginViewModel model = new LoginViewModel
             {
@@ -218,6 +226,77 @@ namespace BugTrackerPetProj.Controllers
             if (signInResult.Succeeded) return LocalRedirect(returnUrl);
 
             return View("Login", model);
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        public IActionResult ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (!ModelState.IsValid) return View(model);
+
+            var user = _repository.GetUserByEmail(model.Email);
+
+            if(user != null)
+            {
+                var userId = _encryptionService.Encrypt(user.Id);
+                var message = _emailService.GeneratePasswordResetMail(user.Email, userId, user.UserName);
+                _emailService.Send(message);
+                return View("Success");
+            }
+
+            ViewBag.Title = "User not found";
+            return View("Error");
+        }
+
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult ChangePassword(string encryptedUserId)
+        {
+            var userId = _encryptionService.Decrypt(encryptedUserId);
+            ChangePasswordViewModel model = new ChangePasswordViewModel();
+            model.Id = userId;
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            
+            if (ModelState.IsValid)
+            {
+                var user = _repository.GetUserById(model.Id);
+
+                if (user == null)
+                {
+                    return RedirectToAction("Login");
+                }
+
+                //var test = await _userManager.SetTwoFactorEnabledAsync(user, true);
+                //var flag = await _userManager.GetTwoFactorEnabledAsync(user);
+                //var provider = await _userManager.GetValidTwoFactorProvidersAsync(user);
+                var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+                var result = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
+
+                if (!result.Succeeded)
+                {
+                    foreach (var error in result.Errors)
+                    {
+                        ModelState.AddModelError(string.Empty, error.Description);
+                    }
+                    return View("Error", model);
+                }
+
+                return RedirectToAction("Login", "Account");
+            }
+            return View(model);
         }
 
     }

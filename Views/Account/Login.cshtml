@@ -65,6 +65,7 @@
                         <input asp-for="RememberMe" />
                         <label asp-for="RememberMe" style="color:white"></label>
                     </div>
+                    <a asp-action="ForgotPassword" asp-controller="Account" style="margin-left:5vw">Forgot password</a>
                 </div>
                 <div class="col-sm-6">
                     <button type="submit" class="btn button-blue mt-4" style="width:auto; float:right; margin-right:70px;
@@ -74,23 +75,23 @@
                 </div>
             </div>
         </form>
-        @if(Model.ExternalLogins.Count == 0)
+        @if (Model.ExternalLogins.Count == 0)
         {
-        <div>No external login configured</div>
+            <div>No external login configured</div>
         }
         else
         {
-        <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
-            <div>
-                @foreach (var provider in Model.ExternalLogins)
-                {
-                    <button type="submit" class="btn btn-primary" name="provider"
-                            value="@provider.Name" title="Login using your @provider account" style="width:auto">
-                        @provider.DisplayName
-                    </button>
-                }
-            </div>
-        </form>
+            <form method="post" asp-action="ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl">
+                <div>
+                    @foreach (var provider in Model.ExternalLogins)
+                    {
+                        <button style="margin:auto; position:relative; margin-left:25vw" type="submit" class="btn button-blue" name="provider"
+                                value="@provider.Name" title="Login using your @provider account">
+                            @provider.DisplayName
+                        </button>
+                    }
+                </div>
+            </form>
         }
     </div>
 </div>
