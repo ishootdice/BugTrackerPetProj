@@ -18,8 +18,14 @@ namespace BugTrackerPetProj.Models
         [Required]
         public string Description { get; set; }
 
-        [Required]
-        public DateTime TimeEstimate { get; set; }
+        //[Required]
+        //public DateTime TimeEstimate { get; set; }
+
+        public DateTime CreationTime { get; set; }
+
+        [NotMapped]
+        [ValidateNever]
+        public string TimePassedFromCreation { get; set; }
 
         [Required]
         public TicketType Type { get; set; }

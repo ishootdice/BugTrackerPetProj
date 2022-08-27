@@ -155,7 +155,7 @@
 
                 $.ajax({
                     type: "POST",
-                    url: "https://localhost:7109/Home/TicketInformation/" + postData,
+                    url: "/Home/TicketInformation/" + postData,
                     success: function (partialView) {
                         $('#toReplace').html(partialView);
                     }
@@ -264,7 +264,7 @@
             @*var data = $('#ticket-add').serialize();*@
         var title = $('#modalTitle').val();
             var description = $('#modalDescription').val();
-            var time = $('#modalTime').val();
+            @*var time = $('#modalTime').val();*@
             var type = $('#modalType').val();
             var priority = $('#modalPriority').val();
             var status = $('#modalStatus').val();
@@ -272,7 +272,7 @@
             $.ajax({
                 type: "POST",
                 url: "/Home/AddTicket",
-                data: { "ProjectId": projectId, "Title": title, "Description": description, "Time": time, "Type": type, "Priority": priority, "Status": status },
+                data: { "ProjectId": projectId, "Title": title, "Description": description, "Type": type, "Priority": priority, "Status": status },
                 success: function () {
                     window.location.href = "/Home/ProjectInformation/" + projectId;
                 }

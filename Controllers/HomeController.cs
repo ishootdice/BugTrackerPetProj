@@ -138,6 +138,7 @@ public class HomeController : Controller
     public IActionResult TicketInformation(int id)
     {
         Ticket ticket = _repository.GetTicketById(id);
+        ticket.TimePassedFromCreation = GetTimePassedFromCreation(ticket.CreationTime);
 
         return PartialView("_ticketInfo", ticket);
     }
@@ -181,7 +182,8 @@ public class HomeController : Controller
                 Priority = model.Priority,
                 Status = model.Status,
                 Type = model.Type,
-                TimeEstimate = model.TimeEstimate
+                CreationTime = DateTime.Now
+                //TimeEstimate = model.TimeEstimate
             };
 
             if(model.UsersIds != null)
@@ -209,6 +211,7 @@ public class HomeController : Controller
     {
         var proj = _repository.GetProject(project);
         var ticket = proj.Tickets.FirstOrDefault(t => t.Id == id);
+        //ticket.TimePassedFromCreation = GetTimePassedFromCreation(DateTime.Now);
         return PartialView("_ticketInfo", ticket);
     }
 
@@ -566,6 +569,49 @@ public class HomeController : Controller
         .GetCustomAttributes(typeof(DescriptionAttribute), false)
         .SingleOrDefault() as DescriptionAttribute;
         return attribute == null ? value.ToString() : attribute.Description;
+    }
+
+    public static string GetTimePassedFromCreation(DateTime creationTime)
+    {
+        TimeSpan span = (DateTime.Now - creationTime);
+
+        //int[] timeArray = new int[1];
+        //timeArray[0] = span.Days;
+        //timeArray[1] = span.Hours;
+        //timeArray[2] = span.Minutes;
+        //timeArray[3] = span.Seconds;
+
+        List<int> timeArray = new List<int>();
+        timeArray.Add(span.Days);
+        timeArray.Add(span.Hours);
+        timeArray.Add(span.Minutes);
+        timeArray.Add(span.Seconds);
+
+        int count = 0;
+        for(int i = 0; i < timeArray.Count; i++)
+        {
+            if (timeArray[i] == 0) count++;
+            else break;
+        }
+
+        string timePassed = "";
+        switch (count)
+        {
+            case 0:
+                timePassed = $"{timeArray[0]} days ago";
+                break;
+            case 1:
+                timePassed = $"{timeArray[1]} hours ago";
+                break;
+            case 2:
+                timePassed = $"{timeArray[2]} minutes ago";
+                break;
+            case 3:
+                timePassed = $"{timeArray[3]} seconds ago";
+                break;
+        }
+
+        return timePassed;
     }
 
 }
