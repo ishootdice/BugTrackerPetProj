@@ -68,7 +68,9 @@ namespace BugTrackerPetProj.Controllers
 
                 if (user == null)
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid Email. Please check if you use correct email adress and try again.");
+                    ViewBag.Error = true;
+                    ViewBag.ToastrTitle = "Error";
+                    ViewBag.Message = "User not found";
                     return View(model);
                 }
 
@@ -85,10 +87,10 @@ namespace BugTrackerPetProj.Controllers
                         else return RedirectToAction("Index", "Home", new { id = user.Id });
                     }
 
-                    ViewBag.Title = "Invalid sign in attempt";
-                    ViewBag.ErrorMessage = "There were some problems when trying to login, please try again. " +
-                        "If the problem persists, please contact us at this email address voitenkodevpost@gmail.com";
-                    return View("Error");
+                    ViewBag.Error = true;
+                    ViewBag.ToastrTitle = "Error";
+                    ViewBag.Message = "Invalid sign in attempt";
+                    return View(model);
                     
                 }
 
@@ -124,20 +126,9 @@ namespace BugTrackerPetProj.Controllers
 
                 if (result.Succeeded)
                 {
-                    //var token = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-
-                    //var confirmationLink = Url.Action("ConfirmEmail", "Account",
-                    //    new { userId = user.Id, token = token }, Request.Scheme);
-
-
                     await _userManager.AddToRoleAsync(user, "User");
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home", new { id = user.Id });
-
-                    //ViewBag.ErrorTitle = "Registration successful";
-                    //ViewBag.ErrorMessage = "Before you can Login, please confirm your " +
-                    //    "email by clicking on the confirmation link we have emailed you";
-                    //return View("Error");
                 }
 
                 foreach (var error in result.Errors)
