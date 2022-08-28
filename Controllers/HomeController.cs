@@ -575,12 +575,6 @@ public class HomeController : Controller
     {
         TimeSpan span = (DateTime.Now - creationTime);
 
-        //int[] timeArray = new int[1];
-        //timeArray[0] = span.Days;
-        //timeArray[1] = span.Hours;
-        //timeArray[2] = span.Minutes;
-        //timeArray[3] = span.Seconds;
-
         List<int> timeArray = new List<int>();
         timeArray.Add(span.Days);
         timeArray.Add(span.Hours);

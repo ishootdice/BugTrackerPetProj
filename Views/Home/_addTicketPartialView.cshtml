@@ -16,10 +16,6 @@
                 <input asp-for="@Model.Title" class="form-control custom-input" id="modalTitle" placeholder="Please write title for ticket" />
                 <span asp-validation-for="Title" class="text-danger"></span>
             </div>
-            @*<div class="col-3">
-                <input asp-for="TimeEstimate" type="time" class="form-control custom-input" id="modalTime" />
-                <span asp-validation-for="TimeEstimate" class="text-danger"></span>
-            </div>*@
         </div>
         <div class="form-group mt-5">
             <div class="col-12">
@@ -29,7 +25,6 @@
         </div>
         <div class="row mt-5">
             <div class="col-4">
-                @*<label asp-for="Status"></label>*@
                 <select asp-for="Status" asp-items="Html.GetEnumSelectList<TicketStatus>()" class="form-select custom-input" id="modalStatus">
                 </select>
                 <span asp-validation-for="Status" class="text-danger"></span>

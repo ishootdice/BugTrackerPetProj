@@ -142,26 +142,6 @@ else
 
         function UpdateTicket(form) {
             window.location.href = "/Home/Tickets";
-            @*var id = $('#currentId').val();
-            var ticketTitle = $('#currentTitle').val();
-            var ticketDescription = $('#currentDescription').val();
-            var ticketType = $('#currentType').val();
-            var ticketStatus = $('#currentStatus').val();
-            var ticketPriority = $('#currentPriority').val();
-            var author = $('#author').val();
-            var projectId = $('#projectId').val();
-
-            $.ajax({
-                type: "POST",
-                url: "/Home/UpdateTicket/",
-                data: { "Id": id, "Title": ticketTitle, "Description": ticketDescription, "Type": ticketType, "Status": ticketStatus, "Priority": ticketPriority, "Author": author, "ProjectId": projectId },
-                success: function () {
-                    window.location.href = "/Home/Tickets";
-                },
-                error: function (response) {
-                    alert(response.responseText);
-                }
-            });*@
         };
     </script>
 }
