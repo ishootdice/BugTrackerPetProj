@@ -57,12 +57,12 @@ namespace BugTrackerPetProj.Models
 
                 if (isAdmin)
                 {
-                    appUrl = "https://localhost:7109/Administration/CompanyInviteConfirmation?userData=";
+                    appUrl = "http://localhost:53741/Administration/CompanyInviteConfirmation?userData=";
                     message.Subject = "Запрошення до компанії";
                 }
                 else
                 {
-                    appUrl = "https://localhost:7109/Administration/InviteConfirmation?userData=";
+                    appUrl = "http://localhost:53741/Administration/InviteConfirmation?userData=";
                     message.Subject = "Запрошення на проект";
                 }
 

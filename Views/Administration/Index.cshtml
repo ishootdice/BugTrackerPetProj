@@ -60,55 +60,56 @@
         </div>
     </div>
 </div>
-<input hidden id="companyIdHolder" value="@ViewBag.CompanyId"/>
+<input hidden id="companyIdHolder" value="@ViewBag.CompanyId" />
 
 
 @section Scripts{
-<script type="text/javascript">
-    $(document).ready(function () {
-        $('#errorDiv').hide();
-        $('#invitationDiv').hide();
-
-
-        $('#addMember').click(function () {
-            $('#invitationDiv').show();
-        });
-
-        $('#submitInviteBtn').click(function () {
-            var email = $('#inviteInput').val();
-            var companyId = $('#companyIdHolder').val();
-            $.ajax({
-                type: "POST",
-                url: "/Administration/AddMember",
-                data: { "Id": companyId, "Email": email },
-                success: function () {
-                    $('#inviteInput').val('');
-                    $('#invitationDiv').hide();
-                },
-                error: function (response) {
-                    $('#errorDiv').show();
-                    $('#inviteError').val(response);
-                }
-            });
-
-        });
-
-        $('#cancelInviteBtn').click(function(){
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <script type="text/javascript">$(document).ready(function () {
+            $('#errorDiv').hide();
             $('#invitationDiv').hide();
-        });
 
-        $('.clickable-row').click(function () {
-            var postData = $(this).find("td:eq(0)").text();
 
-            $.ajax({
-                type: "POST",
-                url: "https://localhost:7109/Administration/MemberInformation/" + postData,
-                success: function (partialView) {
-                    $('#toReplace').html(partialView);
-                }
+            $('#addMember').click(function () {
+                $('#invitationDiv').show();
             });
-        });
 
-    });
-</script>
+            $('#submitInviteBtn').click(function () {
+                var email = $('#inviteInput').val();
+                var companyId = $('#companyIdHolder').val();
+                $.ajax({
+                    type: "POST",
+                    url: "/Administration/AddMember",
+                    data: { "Id": companyId, "Email": email },
+                    success: function () {
+                        $('#inviteInput').val('');
+                        $('#invitationDiv').hide();
+                        toastr.success("Email was sent to user", "Success!");
+                    },
+                    error: function (response) {
+                        $('#errorDiv').show();
+                        $('#inviteError').val(response);
+                    }
+                });
+
+            });
+
+            $('#cancelInviteBtn').click(function () {
+                $('#invitationDiv').hide();
+            });
+
+            $('.clickable-row').click(function () {
+                var postData = $(this).find("td:eq(0)").text();
+
+                $.ajax({
+                    type: "POST",
+                    url: "https://localhost:7109/Administration/MemberInformation/" + postData,
+                    success: function (partialView) {
+                        $('#toReplace').html(partialView);
+                    }
+                });
+            });
+
+        });</script>
 }

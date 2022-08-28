@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "PFuEiMusxnicPrTvwtlNBzABrbhYE3awbVKIki9OUZghYP7+7SNvI5AJ79NctWZxB9ReKfMhwvaPcWnusfLpNw==",
+  "dgSpecHash": "FGTfH1PbCnKy0UU/NoEban1Js886HN/sUbe57TwzsaIfQw2UPwLyE89ImvaT8xxK92Jz1kXtqbr6jN3Z4lkY6w==",
   "success": true,
   "projectFilePath": "/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/BugTrackerPetProj.csproj",
   "expectedPackageFiles": [
@@ -60,7 +60,8 @@
     "/Users/ishootdice/.nuget/packages/system.text.encoding.codepages/4.5.1/system.text.encoding.codepages.4.5.1.nupkg.sha512",
     "/Users/ishootdice/.nuget/packages/system.text.encodings.web/6.0.0/system.text.encodings.web.6.0.0.nupkg.sha512",
     "/Users/ishootdice/.nuget/packages/system.text.json/6.0.0/system.text.json.6.0.0.nupkg.sha512",
-    "/Users/ishootdice/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512"
+    "/Users/ishootdice/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
+    "/Users/ishootdice/.nuget/packages/toastr/2.1.1/toastr.2.1.1.nupkg.sha512"
   ],
   "logs": []
 }

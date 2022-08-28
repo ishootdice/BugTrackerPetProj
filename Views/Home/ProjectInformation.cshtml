@@ -4,8 +4,6 @@
     ViewBag.TicketId = 0;
 }
 
-
-
 <div>
     <input hidden value="@Model.ProjectId" />
     <div class="container">
@@ -95,7 +93,7 @@
     </div>
 
 
-    
+
 
     <div class="row justify-content-around mt-5">
         <div class="col-sm-6 custom-container m-3 card" style="min-height:200px">
@@ -140,11 +138,13 @@
         </div>
     </div>
 </div>
-            
+
 
 
 
 @section Scripts{
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">$(document).ready(function () {
             $('#hiddenEmailInput').hide();
             $('#errorDiv').hide();
@@ -190,6 +190,7 @@
                     data: { "id": ticket, "message": commentText, "author": user },
                     success: function (partialView) {
                         $('#comments').html(partialView);
+                        toastr.success("Your comment posted", "Success!")
                     }
                 });
 

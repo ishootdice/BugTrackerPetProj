@@ -102,8 +102,16 @@ public class HomeController : Controller
             }
 
             _repository.AddProjectToUser(userId, project);
+            ViewBag.Success = true;
+            ViewBag.ToastrTitle = "Success!";
+            ViewBag.Message = "New project was sucessfully added";
+
             return RedirectToAction("Index", "Home");
         }
+
+        ViewBag.Error = true;
+        ViewBag.ToastrTitle = "Error!";
+        ViewBag.Message = "Project wasn't added";
 
         return View();
     }
@@ -112,6 +120,9 @@ public class HomeController : Controller
     public IActionResult DeleteProject(int id)
     {
         _repository.DeleteProject(id);
+        ViewBag.Success = true;
+        ViewBag.ToastrTitle = "Success!";
+        ViewBag.Message = "Project deleted";
         return RedirectToAction("Index", "Home");
     }
 
@@ -139,7 +150,7 @@ public class HomeController : Controller
     {
         Ticket ticket = _repository.GetTicketById(id);
         ticket.TimePassedFromCreation = GetTimePassedFromCreation(ticket.CreationTime);
-
+        
         return PartialView("_ticketInfo", ticket);
     }
 
@@ -152,16 +163,11 @@ public class HomeController : Controller
     }
 
     [HttpPost]
-    public IActionResult ProjectTickets(int ticketsPageIndex, int projectId)
+    public IActionResult ProjectTickets(int projectId)
     {
-        var elementsToSkip = ticketsPageIndex - 1;
         var project = _repository.GetProject(projectId);
 
-        //List<Ticket> tickets = project.Tickets.Skip(elementsToSkip * 7).Take(7).ToList();
         List<Ticket> tickets = project.Tickets.ToList();
-
-        ViewBag.StartIndex = elementsToSkip;
-        ViewBag.LastIndex = elementsToSkip + 7;
 
         return PartialView("_projectTickets", tickets);
     }
@@ -183,7 +189,6 @@ public class HomeController : Controller
                 Status = model.Status,
                 Type = model.Type,
                 CreationTime = DateTime.Now
-                //TimeEstimate = model.TimeEstimate
             };
 
             if(model.UsersIds != null)
@@ -198,6 +203,10 @@ public class HomeController : Controller
             project.Tickets.Add(ticket);
             _repository.UpdateProject(project);
 
+            ViewBag.Success = true;
+            ViewBag.ToastrTitle = "Success!";
+            ViewBag.Message = "New ticket sucessfully added";
+
             return RedirectToAction("ProjectInformation", "Home", new { id = model.ProjectId });
         }
 
@@ -211,7 +220,7 @@ public class HomeController : Controller
     {
         var proj = _repository.GetProject(project);
         var ticket = proj.Tickets.FirstOrDefault(t => t.Id == id);
-        //ticket.TimePassedFromCreation = GetTimePassedFromCreation(DateTime.Now);
+
         return PartialView("_ticketInfo", ticket);
     }
 
@@ -225,7 +234,7 @@ public class HomeController : Controller
 
         ticket.Comments.Add(comment);
         Ticket ticketToPass = _repository.UpdateTicket(ticket);
-        
+
         return PartialView("_commentsSection", ticketToPass);
     }
 
@@ -241,6 +250,10 @@ public class HomeController : Controller
     public JsonResult UpdateProject([Bind("Id, ProjectName, ProjectDescription")]Project model)
     {
         _repository.UpdateProject(model);
+
+        ViewBag.Success = true;
+        ViewBag.ToastrTitle = "Success!";
+        ViewBag.Message = "Project updated";
         return Json(true);
     }
 
@@ -267,6 +280,11 @@ public class HomeController : Controller
     public IActionResult UpdateTicket([Bind("Id, Title, Description, Status, Type, Priority, Author, ProjectId")]Ticket model)
     {
         _repository.UpdateTicket(model);
+
+        ViewBag.Success = true;
+        ViewBag.ToastrTitle = "Success!";
+        ViewBag.Message = "Ticket updated";
+
         return RedirectToAction("Tickets", "Home");
     }
 
@@ -289,6 +307,7 @@ public class HomeController : Controller
     public IActionResult CreateCompany()
     {
         Company model = new Company();
+
         return View(model);
     }
 
@@ -304,13 +323,22 @@ public class HomeController : Controller
             await _signInManager.SignOutAsync();
             await _signInManager.SignInAsync(user, isPersistent:false);
 
-            if (result.Succeeded) return RedirectToAction("Index", "Administration");
+            if (result.Succeeded)
+            {
+                ViewBag.Success = true;
+                ViewBag.ToastrTitle = "Success!";
+                ViewBag.Message = "Company created";
+                return RedirectToAction("Index", "Administration");
+            }
 
             foreach (var err in result.Errors)
             {
                 ModelState.AddModelError("", err.Description);
             }
 
+            ViewBag.Error = true;
+            ViewBag.ToastrTitle = "Error!";
+            ViewBag.Message = "Something went worng";
             return View("Error");
         }
 

@@ -17,6 +17,8 @@ namespace BugTrackerPetProj.Controllers
     {
         private readonly UserManager<User> _userManager;
 
+        private readonly SignInManager<User> _signInManager;
+
         private readonly RoleManager<IdentityRole> _roleManager;
 
         private readonly IEmailService _emailService;
@@ -26,13 +28,14 @@ namespace BugTrackerPetProj.Controllers
         private readonly IEncryptionService _encryptionService;
 
         public AdministrationController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IEmailService emailService,
-            IRepository repository, IEncryptionService encryptionService)
+            IRepository repository, IEncryptionService encryptionService, SignInManager<User> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _emailService = emailService;
             _repository = repository;
             _encryptionService = encryptionService;
+            _signInManager = signInManager;
         }
 
         // GET: /<controller>/
@@ -117,8 +120,8 @@ namespace BugTrackerPetProj.Controllers
             return View("Error");
         }
 
-
-        public IActionResult CompanyInviteConfirmation(string userData)
+        [HttpGet]
+        public async Task<IActionResult> CompanyInviteConfirmation(string userData)
         {
             string userEmail = userData.Substring(0, userData.IndexOf("-"));
             string companyId = userData.Substring(userData.LastIndexOf("-") + 1);
@@ -135,7 +138,10 @@ namespace BugTrackerPetProj.Controllers
                 {
                     company.Users.Add(user);
                     _repository.UpdateCompany(company);
-                    return RedirectToAction("Index", "Home");
+
+                    if (_signInManager.IsSignedIn(User)) await _signInManager.SignOutAsync();
+
+                    return RedirectToAction("Login", "Account", new {isAfterConfirmation = true});
                 }
                 return View("Error");
             }

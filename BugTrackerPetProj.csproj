@@ -30,6 +30,7 @@
     <None Remove="Newtonsoft.Json" />
     <None Remove="Microsoft.AspNetCore.Authentication.Google" />
     <None Remove="Microsoft.AspNetCore.Authentication.Facebook" />
+    <None Remove="toastr" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="6.0.8">
@@ -49,6 +50,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" Version="6.0.8" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Facebook" Version="6.0.8" />
+    <PackageReference Include="toastr" Version="2.1.1" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Interfaces\" />

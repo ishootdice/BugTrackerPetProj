@@ -59,16 +59,8 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/ProjectInfo.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9qZWN0SW5mby5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/ProjectInformation.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9Qcm9qZWN0SW5mb3JtYXRpb24uY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/TempView.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3MvSG9tZS9UZW1wVmlldy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Home/Tickets.cshtml]
@@ -121,6 +113,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0Vycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Shared/_Notification.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL19Ob3RpZmljYXRpb24uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/ishootdice/Projects/BugTrackerPetProj/BugTrackerPetProj/Views/Shared/_ValidationScriptsPartial.cshtml]

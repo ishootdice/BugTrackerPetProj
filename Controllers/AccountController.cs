@@ -39,13 +39,20 @@ namespace BugTrackerPetProj.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Login(string? returnUrl)
+        public async Task<IActionResult> Login(string? returnUrl, bool? isAfterConfirmation)
         {
             LoginViewModel model = new LoginViewModel
             {
                 ReturnUrl = returnUrl,
                 ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList()
             };
+
+            if (isAfterConfirmation != null)
+            {
+                ViewBag.Success = true;
+                ViewBag.ToastrTitle = "Success";
+                ViewBag.Message = "Company invite was confirm";
+            }
 
             return View(model);
         }
@@ -248,11 +255,17 @@ namespace BugTrackerPetProj.Controllers
                 var userId = _encryptionService.Encrypt(user.Id);
                 var message = _emailService.GeneratePasswordResetMail(user.Email, userId, user.UserName);
                 _emailService.Send(message);
-                return View("Success");
+
+                ViewBag.Success = true;
+                ViewBag.ToastrTitle = "Success!";
+                ViewBag.Message = $"Check your email";
+                return View("ForgotPassword");
             }
 
-            ViewBag.Title = "User not found";
-            return View("Error");
+            ViewBag.Error = true;
+            ViewBag.ToastrTitle = "Error!";
+            ViewBag.Message = "User not found";
+            return View("ForgotPassword");
         }
 
 
